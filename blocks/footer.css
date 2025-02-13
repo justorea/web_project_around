@@ -1,0 +1,27 @@
+.footer {
+  display: block;
+  height: 18px;
+  margin: 0 200px;
+  max-width: 880px;
+}
+
+.footer__copyright {
+  display: block;
+  max-width: 318px;
+  color: #545454;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1280px) {
+  .footer {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .footer__copyright {
+    max-width: 282px;
+    margin-left: 19px;
+  }
+}

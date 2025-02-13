@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alrededor de los EE.UU.</title>
+    <meta
+      name="description"
+      content="Página interactiva en la que los usuarios pueden añadir, eliminar o dar me gusta a las fotos."
+    />
+    <meta name="author" content="Eduardo Justo" />
+    <meta
+      name="keywords"
+      content="html, css, javascript, fotografía, ciudades, arte, USA, landscape, like, photo"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body class="page">
+    <div class="popup popup__container">
+      <form class="popup__form form">
+        <img
+          class="popup__close"
+          src="./images/close.svg"
+          alt="ícono cerrar ventana"
+        />
+        <h1 class="form__title">Editar perfil</h1>
+        <input
+          class="form__input-name"
+          type="text"
+          placeholder="Nombre"
+          value="Jacques Cousteau"
+        />
+        <input
+          class="form__input-about"
+          type="text"
+          placeholder="Acerca de mi"
+          value="Explorador"
+        />
+        <input type="submit" class="form__submit" value="Guardar" />
+      </form>
+    </div>
+
+    <header class="header">
+      <img src="./images/Title_Vector.png" alt="Logo" class="header__logo" />
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <img src="./images/Avatar.png" alt="Avatar" class="profile__avatar" />
+        <div class="profile__info">
+          <div class="profile__headline">
+            <h2 class="profile__title">Jacques Cousteau</h2>
+            <div class="profile__edit-button"></div>
+          </div>
+          <h3 class="profile__subtitle">Explorador</h3>
+        </div>
+
+        <div class="profile__add-button"></div>
+      </section>
+
+      <section class="elements">
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Yosemite_Valley.jpg"
+            alt="Valle de Yosemite"
+          />
+          <div class="element__footer">
+            <h4 class="element__title element__block">Valle de Yosemite</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Louise.png"
+            alt="Lago Louise"
+          />
+
+          <div class="element__footer">
+            <h4 class="element__title block">Lago Louise</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Calvas.png"
+            alt="Montañas Calvas"
+          />
+
+          <div class="element__footer">
+            <h4 class="element__title block">Montañas Calvas</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Latemar.png"
+            alt="imagen de Latemar"
+          />
+          <div class="element__footer">
+            <h4 class="element__title block">Latemar</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Vanois_National.png"
+            alt="Parque Nacional de Vanois"
+          />
+
+          <div class="element__footer">
+            <h4 class="element__title block">Vanois National Park</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+
+        <div class="element">
+          <img
+            class="element__image"
+            src="./images/Lago_di_Braies.png"
+            alt="Lago de Braies"
+          />
+
+          <div class="element__footer">
+            <h4 class="element__title">Lago di Braies</h4>
+            <div class="element__like"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2024 Around The U.S.</p>
+    </footer>
+
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
