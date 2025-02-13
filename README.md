@@ -11,6 +11,6 @@ Caracteristicas del proyecto:
 -Display: Grid
 -Java Script
 
-URL github pages:
+URL github pages: https://justorea.github.io/web_project_around/
 
 Eduardo A. Justo Rodríguez
