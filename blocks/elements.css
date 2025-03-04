@@ -10,14 +10,17 @@
 
 .element {
   background-color: #ffffff;
-  max-width: 282px;
+  width: 282px;
   max-height: 361px;
   border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
 
 .element__image {
-  max-width: 282px;
-  max-height: 282px;
+  width: 100%;
+  height: 282px;
   margin: 0;
 }
 
@@ -42,11 +45,36 @@
   overflow: hidden;
 }
 
-.element__like {
+.element__like-empty {
   background-image: url(../images/like_vector.svg);
   width: 21px;
   height: 19px;
   cursor: pointer;
+}
+
+.element__like-empty:hover {
+  opacity: 0.5;
+}
+
+.element__like-full {
+  background-image: url(../images/like_full.png);
+  width: 21px;
+  height: 19px;
+  cursor: pointer;
+}
+
+.element__trash {
+  background-image: url(../images/Trash.svg);
+  width: 18px;
+  height: 19px;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.element__trash:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1028px) {

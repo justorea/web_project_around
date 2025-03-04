@@ -18,8 +18,8 @@
 
   <body class="page">
     <section class="popup">
-      <div class="popup__container">
-        <form class="popup__form form">
+      <div class="popup__container" id="popup-profile">
+        <form class="popup__form form" id="form-profile">
           <img
             class="popup__close"
             src="./images/close.svg"
@@ -40,6 +40,45 @@
           />
           <input type="submit" class="form__submit" value="Guardar" />
         </form>
+      </div>
+
+      <div class="popup__container" id="popup-elements">
+        <form class="popup__form form" id="form-elements">
+          <img
+            class="popup__close"
+            src="./images/close.svg"
+            alt="ícono cerrar ventana"
+            id="close-elements"
+          />
+          <h1 class="form__title">Nuevo Lugar</h1>
+          <input
+            class="form__input-name"
+            type="text"
+            placeholder="Título"
+            id="place-name"
+          />
+          <input
+            class="form__input-about"
+            type="url"
+            placeholder="Enlace al lugar"
+            id="place-url"
+          />
+          <input type="submit" class="form__submit" value="Crear" />
+        </form>
+      </div>
+
+      <div class="popup__container" id="popup-element">
+        <div class="popup__element">
+          <img
+            class="popup__close"
+            src="./images/close.svg"
+            alt="ícono cerrar ventana"
+            id="close-element"
+          />
+
+          <img class="popup__image" src="" alt="Imagen del lugar" />
+          <h3 class="popup-element__title"></h3>
+        </div>
       </div>
     </section>
 
@@ -62,81 +101,16 @@
       </section>
 
       <section class="elements">
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Yosemite_Valley.jpg"
-            alt="Valle de Yosemite"
-          />
-          <div class="element__footer">
-            <h4 class="element__title element__block">Valle de Yosemite</h4>
-            <div class="element__like"></div>
+        <template id="element-template">
+          <div class="element">
+            <div class="element__trash"></div>
+            <img class="element__image" src="" />
+            <div class="element__footer">
+              <h4 class="element__title element__block"></h4>
+              <div class="element__like-empty"></div>
+            </div>
           </div>
-        </div>
-
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Louise.png"
-            alt="Lago Louise"
-          />
-
-          <div class="element__footer">
-            <h4 class="element__title block">Lago Louise</h4>
-            <div class="element__like"></div>
-          </div>
-        </div>
-
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Calvas.png"
-            alt="Montañas Calvas"
-          />
-
-          <div class="element__footer">
-            <h4 class="element__title block">Montañas Calvas</h4>
-            <div class="element__like"></div>
-          </div>
-        </div>
-
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Latemar.png"
-            alt="imagen de Latemar"
-          />
-          <div class="element__footer">
-            <h4 class="element__title block">Latemar</h4>
-            <div class="element__like"></div>
-          </div>
-        </div>
-
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Vanois_National.png"
-            alt="Parque Nacional de Vanois"
-          />
-
-          <div class="element__footer">
-            <h4 class="element__title block">Vanois National Park</h4>
-            <div class="element__like"></div>
-          </div>
-        </div>
-
-        <div class="element">
-          <img
-            class="element__image"
-            src="./images/Lago_di_Braies.png"
-            alt="Lago de Braies"
-          />
-
-          <div class="element__footer">
-            <h4 class="element__title">Lago di Braies</h4>
-            <div class="element__like"></div>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
 
