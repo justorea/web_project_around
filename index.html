@@ -24,20 +24,36 @@
             class="popup__close"
             src="./images/close.svg"
             alt="ícono cerrar ventana"
+            id="close-button-profile"
           />
           <h1 class="form__title">Editar perfil</h1>
+
           <input
-            class="form__input-name"
+            class="form__input"
             type="text"
             placeholder="Nombre"
             value="Jacques Cousteau"
+            required
+            minlength="2"
+            maxlength="40"
+            name="input-name"
+            id="input-name"
           />
+          <span class="form__error-msg" id="input-name-error"></span>
+
           <input
-            class="form__input-about"
+            class="form__input"
             type="text"
             placeholder="Acerca de mi"
             value="Explorador"
+            required
+            minlength="2"
+            maxlength="200"
+            name="input-about"
+            id="input-about"
           />
+          <span class="form__error-msg" id="input-about-error"></span>
+
           <input type="submit" class="form__submit" value="Guardar" />
         </form>
       </div>
@@ -52,17 +68,26 @@
           />
           <h1 class="form__title">Nuevo Lugar</h1>
           <input
-            class="form__input-name"
+            class="form__input"
             type="text"
             placeholder="Título"
             id="place-name"
+            required
+            minlength="2"
+            maxlength="30"
+            name="place-name"
           />
+          <span class="form__error-msg" id="place-name-error"></span>
+
           <input
-            class="form__input-about"
+            class="form__input"
             type="url"
             placeholder="Enlace al lugar"
             id="place-url"
+            required
+            name="place-url"
           />
+          <span class="form__error-msg" id="place-url-error"></span>
           <input type="submit" class="form__submit" value="Crear" />
         </form>
       </div>
@@ -119,5 +144,6 @@
     </footer>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

@@ -6,7 +6,6 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  row-gap: 30px;
   color: black;
   border-radius: 10px;
 }
@@ -15,11 +14,10 @@
   width: 330px;
   font-weight: 900;
   font-size: 24px;
-  margin: 24px 64px 24px 36px;
+  margin: 24px 64px 44px 36px;
 }
 
-.form__input-name,
-.form__input-about {
+.form__input {
   width: 358px;
   height: 28px;
   text-align: left;
@@ -33,15 +31,38 @@
   width: 358px;
   height: 51px;
   color: #ffffff;
+  border-style: solid;
   border-radius: 2px;
+  border-color: #000000;
   font-size: 18px;
-  margin: 18px 0 37px;
+  margin: 28px 0 37px;
   cursor: pointer;
-  background: #000000;
+  background-color: #000000;
 }
 
 .form__submit:hover {
   opacity: 0.8;
+}
+
+.form__error-msg {
+  color: red;
+  font-size: 12px;
+  width: 358px;
+  height: 28px;
+  text-align: left;
+  margin-top: 6px;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid red;
+}
+
+.form__button_disabled {
+  outline: none;
+  box-shadow: none;
+  color: #cccccc;
+  background: #ffffff;
+  border-color: #cccccc;
 }
 
 @media screen and (max-width: 544px) {
@@ -57,8 +78,7 @@
     margin: 25px 22px 35px;
   }
 
-  .form__input-name,
-  .form__input-about {
+  .form__input {
     width: 238px;
     height: 26px;
   }
