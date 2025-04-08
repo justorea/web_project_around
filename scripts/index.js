@@ -1,23 +1,13 @@
-const editButton = document.querySelector(".profile__edit-button");
-const popUpProfile = document.querySelector("#popup-profile");
-const formInputName = document.querySelector("#input-name");
-const profileTitle = document.querySelector(".profile__title");
+import { Card } from "./card.js";
+import { FormValidator } from "./FormValidator.js";
+import {
+  closePopup,
+  closePopupIfClickedOutside,
+  setPopupEvents,
+} from "./utils.js";
+
 const formEditProfile = document.querySelector("#form-profile");
-const profileSubtitle = document.querySelector(".profile__subtitle");
-const popUpProfileCloseButton = document.querySelector(".popup__close");
-const formInputAbout = document.querySelector("#input-about");
-const elementTemplate = document.querySelector("#element-template");
-const elementsContainer = document.querySelector(".elements");
-const popUpCreateElement = document.querySelector("#popup-elements");
-const createCardElementButton = document.querySelector(".profile__add-button");
-const popUpElementsCloseButton = document.querySelector("#close-elements");
-const inputNamePlace = document.querySelector("#place-name");
-const inputUrlPlace = document.querySelector("#place-url");
-const formCreateElements = document.querySelector("#form-elements");
-const popUpViewElement = document.querySelector("#popup-element");
-const popupImage = document.querySelector(".popup__image");
-const closepopUpViewElementButton = document.querySelector("#close-element");
-const popUpContainer = document.querySelector(".popup__container");
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -45,104 +35,75 @@ const initialCards = [
   },
 ];
 
-function handleOpenPopUp() {
-  popUpProfile.classList.add("popup_opened");
-}
+const profileFormValidator = new FormValidator(
+  {
+    formSelector: "#form-profile",
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__submit",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__error_visible",
+  },
+  document.querySelector("#form-profile")
+);
 
-function handleLikeButton(evt) {
-  const likeButton = evt.target;
-  likeButton.classList.toggle("element__like-empty");
-  likeButton.classList.toggle("element__like-full");
-}
+profileFormValidator.enableValidation();
+formEditProfile.addEventListener("submit", handleChangeProfileName);
 
-function openImagePopUp(link, name) {
-  popupImage.src = link;
-  popUpViewElement.querySelector(".popup-element__title").textContent = name;
-  popUpViewElement.classList.add("popup_opened");
-}
+const elementsFormValidator = new FormValidator(
+  {
+    formSelector: "#form-elements",
+    inputSelector: ".form__input",
+    submitButtonSelector: ".form__submit",
+    inactiveButtonClass: "form__button_disabled",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__error_visible",
+  },
+  document.querySelector("#form-elements")
+);
 
-function closePopup() {
-  popUpProfile.classList.remove("popup_opened");
-  popUpCreateElement.classList.remove("popup_opened");
-  popUpViewElement.classList.remove("popup_opened");
-}
+elementsFormValidator.enableValidation();
 
 function handleChangeProfileName(evt) {
   evt.preventDefault();
+
+  const formInputName = document.querySelector("#input-name");
+  const formInputAbout = document.querySelector("#input-about");
+
+  const profileTitle = document.querySelector(".profile__title");
+  const profileSubtitle = document.querySelector(".profile__subtitle");
+
   profileTitle.textContent = formInputName.value;
   profileSubtitle.textContent = formInputAbout.value;
   closePopup();
 }
 
-function createCard(name, link) {
-  const elementCard = elementTemplate
-    .cloneNode(true)
-    .content.querySelector(".element");
-
-  const likeButton = elementCard.querySelector(".element__like-empty");
-  const elementImage = elementCard.querySelector(".element__image");
-  const elementName = elementCard.querySelector(".element__title");
-  const trashButton = elementCard.querySelector(".element__trash");
-
-  likeButton.addEventListener("click", handleLikeButton);
-  elementImage.src = link;
-  elementName.textContent = name;
-  trashButton.addEventListener("click", function () {
-    elementCard.remove();
-  });
-  elementImage.addEventListener("click", function () {
-    openImagePopUp(link, name);
-  });
-  elementsContainer.prepend(elementCard);
-}
-
-function closePopupIfClickedOutside(evt) {
-  if (evt.target === popUpProfile) {
-    closePopup();
-  }
-}
-
-editButton.addEventListener("click", handleOpenPopUp);
-formEditProfile.addEventListener("submit", handleChangeProfileName);
-popUpProfileCloseButton.addEventListener("click", function () {
-  closePopup();
+const elementsContainer = document.querySelector(".elements");
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#element-template");
+  elementsContainer.prepend(card.generateCard());
 });
 
-createCardElementButton.addEventListener("click", function () {
-  popUpCreateElement.classList.add("popup_opened");
-});
-popUpElementsCloseButton.addEventListener("click", function () {
-  closePopup();
-});
+const formCreateElement = document.querySelector("#form-elements");
 
-formCreateElements.addEventListener("submit", function (evt) {
+formCreateElement.addEventListener("submit", handleCreateNewElement);
+
+function handleCreateNewElement(evt) {
   evt.preventDefault();
-  createCard(inputNamePlace.value, inputUrlPlace.value);
+
+  const placeNameInput = document.querySelector("#place-name");
+  const placeUrlInput = document.querySelector("#place-url");
+
+  const newCardData = {
+    name: placeNameInput.value,
+    link: placeUrlInput.value,
+  };
+
+  const newCard = new Card(newCardData, "#element-template");
+  elementsContainer.prepend(newCard.generateCard());
+  placeNameInput.value = "";
+  placeUrlInput.value = "";
   closePopup();
-});
+}
 
-initialCards.forEach(function (card) {
-  createCard(card.name, card.link);
-});
-
-closepopUpViewElementButton.addEventListener("click", closePopup);
-
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup();
-  }
-});
-
-popUpProfile.addEventListener("click", closePopupIfClickedOutside);
-
-popUpCreateElement.addEventListener("click", function (evt) {
-  if (evt.target === popUpCreateElement) {
-    closePopup();
-  }
-});
-
-popUpViewElement.addEventListener("click", function (evt) {
-  if (evt.target === popUpViewElement) {
-    closePopup();
-  }
-});
+setPopupEvents();
