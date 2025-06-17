@@ -1,6 +1,5 @@
 .form {
   width: 430px;
-  height: 330px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -15,6 +14,13 @@
   font-weight: 900;
   font-size: 24px;
   margin: 24px 64px 44px 36px;
+}
+
+.form__delete-title {
+  width: 330px;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 24px 64px 0px 36px;
 }
 
 .form__input {

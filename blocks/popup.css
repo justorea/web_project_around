@@ -43,6 +43,18 @@
   font-weight: 400;
 }
 
+.popup__delete {
+  width: 430px;
+  height: 181px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  color: black;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 544px) {
   .popup__close {
     width: 26px;

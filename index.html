@@ -105,6 +105,41 @@
           <h3 class="popup-element__title"></h3>
         </div>
       </div>
+
+      <div class="popup__container" id="popup-delete">
+        <form class="popup__form form" id="form-delete">
+          <img
+            class="popup__close"
+            src="./images/close.svg"
+            alt="ícono cerrar ventana"
+            id="close-delete"
+          />
+          <h1 class="form__delete-title">¿Estás seguro/a?</h1>
+          <input type="submit" class="form__submit" value="Sí" />
+        </form>
+      </div>
+
+      <div class="popup__container" id="popup-avatar">
+        <form class="popup__form form" id="form-avatar">
+          <img
+            class="popup__close"
+            src="./images/close.svg"
+            alt="ícono cerrar ventana"
+            id="close-avatar"
+          />
+          <h1 class="form__title">Cambiar foto de perfil</h1>
+          <input
+            class="form__input"
+            type="url"
+            placeholder="Enlace a la imagen"
+            id="avatar-url"
+            required
+            name="avatar-url"
+          />
+          <span class="form__error-msg" id="avatar-url-error"></span>
+          <input type="submit" class="form__submit" value="Guardar" />
+        </form>
+      </div>
     </section>
 
     <header class="header">
@@ -113,13 +148,15 @@
 
     <main class="content">
       <section class="profile">
-        <img src="./images/Avatar.png" alt="Avatar" class="profile__avatar" />
+        <div class="profile__avatar">
+          <img src="./images/Avatar.png" alt="Avatar" />
+        </div>
         <div class="profile__info">
           <div class="profile__headline">
-            <h2 class="profile__title">Jacques Cousteau</h2>
+            <h2 class="profile__title"></h2>
             <div class="profile__edit-button"></div>
           </div>
-          <h3 class="profile__subtitle">Explorador</h3>
+          <h3 class="profile__subtitle"></h3>
         </div>
 
         <div class="profile__add-button"></div>

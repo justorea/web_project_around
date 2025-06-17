@@ -1,32 +1,29 @@
 import { Popup } from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
+export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector, submitCallback) {
     super(popupSelector);
     this._submitCallback = submitCallback;
     this._form = this._popup.querySelector(".popup__form");
-    this._inputs = this._form.querySelectorAll(".form__input");
     this._submitButton = this._form.querySelector(".form__submit");
     this._submitButtonText = this._submitButton.value;
+    this._cardId = null;
   }
 
-  _getInputValues() {
-    const formValues = {};
-    this._inputs.forEach((input) => {
-      formValues[input.name] = input.value;
-    });
-    return formValues;
+  open(cardId) {
+    this._cardId = cardId;
+    super.open();
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitCallback(this._getInputValues());
+      this._submitCallback(this._cardId);
     });
   }
 
-  renderLoading(isLoading, loadingText = "Guardando...") {
+  renderLoading(isLoading, loadingText = "Eliminando...") {
     if (isLoading) {
       this._submitButton.value = loadingText;
       this._submitButton.disabled = true;
@@ -38,7 +35,6 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._form.reset();
     this.renderLoading(false);
   }
 }
