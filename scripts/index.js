@@ -39,8 +39,8 @@ const profilePopup = new PopupWithForm("#popup-profile", (data) => {
       });
       profilePopup.close();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.error("Error al actualizar el perfil:", error);
     })
     .finally(() => {
       profilePopup.renderLoading(false);
@@ -58,8 +58,8 @@ const newCardPopup = new PopupWithForm("#popup-elements", (data) => {
       cardList.addItem(cardElement);
       newCardPopup.close();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.error("Error al crear la carta:", error);
     })
     .finally(() => {
       newCardPopup.renderLoading(false);
@@ -79,8 +79,8 @@ const deleteCardPopup = new PopupWithConfirmation("#popup-delete", (cardId) => {
       }
       deleteCardPopup.close();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.error("Error al eliminar la carta:", error);
     })
     .finally(() => {
       deleteCardPopup.renderLoading(false);
@@ -101,8 +101,8 @@ const avatarPopup = new PopupWithForm("#popup-avatar", (data) => {
       });
       avatarPopup.close();
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.error("Error al actualizar el avatar:", error);
     })
     .finally(() => {
       avatarPopup.renderLoading(false);
@@ -127,8 +127,8 @@ function createCard(data) {
           .then((cardData) => {
             card.updateLikes(cardData.isLiked);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            console.error("Error", error);
           });
       } else {
         api
@@ -136,8 +136,8 @@ function createCard(data) {
           .then((cardData) => {
             card.updateLikes(cardData.isLiked);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            console.error("Error", error);
           });
       }
     },
@@ -207,6 +207,6 @@ api
     cardList._items = cardsData;
     cardList.renderItems();
   })
-  .catch((err) => {
-    console.log(err);
+  .catch((error) => {
+    console.error("Error", error);
   });

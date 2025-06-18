@@ -18,22 +18,24 @@ class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   createCard(name, link) {
@@ -44,11 +46,12 @@ class Api {
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   updateUserProfile(name, about) {
@@ -59,11 +62,12 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   updateUserAvatar(avatar) {
@@ -73,44 +77,48 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   deleteCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   likeCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   unlikeCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
         return res.json();
-      }
-    });
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   getAppInfo() {
