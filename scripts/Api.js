@@ -1,13 +1,3 @@
-fetch("https://around-api.es.tripleten-services.com/v1/cards", {
-  headers: {
-    authorization: "4611f1bc-4393-44a6-ba39-28526d3cc1ae",
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  });
-
 class Api {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
